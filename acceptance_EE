@@ -1,0 +1,20 @@
+data_gen = data.arrays(["z_genMass","eventNumber","lepton_genPt","antiLepton_genPt","lepton_genEta","antiLepton_genEta"],"decayMode==11")
+
+filtered_data_genEE = data_gen[
+    (data_gen['lepton_genPt'] > 30) & 
+    (data_gen['antiLepton_genPt'] > 30) &
+    (abs(data_gen['antiLepton_genEta']) < 2.5) &
+    (abs(data_gen['lepton_genEta']) < 2.5)&
+    ((abs(data_gen['antiLepton_genEta']) >= 0.9) &
+    (abs(data_gen['lepton_genEta']) >= 0.9)) &
+    ((data_gen['z_genMass'] > 75) & (data_gen['z_genMass'] < 105))
+]
+
+
+print(len(filtered_data_genEE["z_genMass"]),"zgnmass with filterEE")
+print(len(data_gen["z_genMass"]),"zgnmass without filterEE")
+
+Acceptance_genEE = len(filtered_data_genEE["z_genMass"]) / len(data_gen["z_genMass"])
+errorEE = (1/len(filtered_data_genEE["z_genMass"]))+(1/ len(data_gen["z_genMass"]))
+print(Acceptance_genEE ,"Acceptance_genlevelEE")
+print(errorEE , "errorAcc_EE")
