@@ -11,10 +11,10 @@ def calculate_L(N1, N2, N1_prime, N2_prime, constant_value_1):
 
 # Function to calculate (delta L / L)^2
 def calculate_delta_L_over_L_squared(N1, N2, N1_prime, N2_prime, delta_N1, delta_N2, delta_N1_prime, delta_N2_prime, constant_value_2, constant_value_3):
-    term1 = 3 * (delta_N2 / N2) ** 2
-    term2 = (delta_N2_prime / N2_prime) ** 2
-    term3 = (4 * (delta_N2) ** 2 + (delta_N1) ** 2) / ((2 * N2 + N1) ** 2)
-    term4 = (4 * (delta_N2_prime) ** 2 + (delta_N1_prime) ** 2) / ((2 * N2_prime + N1_prime) ** 2)
+    term1 = (delta_N2 / N2) ** 2 + (delta_N1 / N1) ** 2 + (delta_N2_prime / N2_prime) ** 2
+    term2 = (4 * (delta_N2) ** 2 + (delta_N1) ** 2) / ((2 * N2 + N1) ** 2)
+    term3 = (4 * (delta_N2_prime) ** 2 + (delta_N1_prime) ** 2) / ((2 * N2_prime + N1_prime) ** 2)
+    term4 = ((1 - ((2*N2)/N1))**2 ) * ( (delta_N2 / N2) ** 2 +  (4 * (delta_N2) ** 2 + (delta_N1) ** 2) / ((2 * N2 + N1) ** 2))
     return term1 + term2 + term3 + term4 + constant_value_2 + constant_value_3
 
 # Load data from text files
